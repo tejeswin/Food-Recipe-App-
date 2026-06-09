@@ -3,43 +3,64 @@ import { NavLink } from "react-router-dom";
 import { GlobalContext } from "../../context";
 
 export default function Navbar() {
-  const { searchParam, setSearchParam , handleSubmit } = useContext(GlobalContext);
-
-  console.log(searchParam);
+  const { searchParam, setSearchParam, handleSubmit } =
+    useContext(GlobalContext);
 
   return (
-    <nav className="flex justify-between items-center py-8 container mx-auto flex-col lg:flex-row gap-5 lg:gap-0">
-      <h2 className="text-2xl font-semibold">
-        <NavLink to={"/"}>FoodRecipe</NavLink>
-      </h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="search"
-          value={searchParam}
-          onChange={(event) => setSearchParam(event.target.value)}
-          placeholder="Enter Items..."
-          className="bg-white/75 p-3 px-8 rounded-full outline-none lg:w-96 shadow-lg shadow-red-100 focus:shadow-red-200"
-        />
-      </form>
-      <ul className="flex gap-5">
-        <li>
+    <nav className="py-8 container mx-auto">
+      {/* Top Row: Logo and Nav Links */}
+      <div className="flex justify-between items-center mb-14">
+        {/* Logo */}
+        <h2 className="text-4xl lg:text-4xl font-black">
           <NavLink
             to={"/"}
-            className="text-black hover:text-gray-700 duration-300"
+            className="bg-gradient-to-r from-orange-400 to-yellow-300 bg-clip-text text-transparent drop-shadow-lg"
           >
-            Home
+            🍽️ Recipe Explorer
           </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to={"/favorites"}
-            className="text-black hover:text-gray-700 duration-300"
+        </h2>
+
+        {/* Navigation Links */}
+        <ul className="flex gap-8">
+          <li>
+            <NavLink
+              to={"/"}
+              className="text-white text-2xl font-semibold hover:text-orange-300 duration-300"
+            >
+              🏠 Home
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
+              to={"/favorites"}
+              className="text-white text-1xl font-semibold hover:text-orange-300 duration-300"
+            >
+              ❤️ Favorites
+            </NavLink>
+          </li>
+        </ul>
+      </div>
+
+      {/* Search Bar - Centered */}
+      <div className="flex justify-center">
+        <form onSubmit={handleSubmit} className="flex gap-2 w-full lg:w-auto">
+          <input
+            type="text"
+            name="search"
+            value={searchParam}
+            onChange={(event) => setSearchParam(event.target.value)}
+            placeholder="Search delicious recipes..."
+            className="bg-white/90 p-4 px-8 rounded-full outline-none flex-1 lg:flex-none lg:w-[450px] text-gray-800 text-lg shadow-2xl border border-white/30 focus:ring-2 focus:ring-orange-400"
+          />
+          <button
+            type="submit"
+            className="bg-orange-400 hover:bg-orange-500 text-white font-bold py-4 px-8 rounded-full shadow-2xl transition duration-300 ease-in-out transform hover:scale-105"
           >
-            favorites
-          </NavLink>
-        </li>
-      </ul>
+            🔍 Search
+          </button>
+        </form>
+      </div>
     </nav>
   );
 }
