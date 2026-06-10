@@ -40,10 +40,10 @@ export default function Details() {
         </div>
       </div>
       <div className="flex flex-col gap-3">
-        <span className="text-sm text-cyan-700 font-medium">
+        <span className="text-sm text-cyan-400 font-medium">
           {recipeDetailsData?.recipe?.publisher}
         </span>
-        <h3 className="font-bold text-2xl truncate text-black">
+        <h3 className="font-bold text-2xl truncate text-white">
           {recipeDetailsData?.recipe?.title}
         </h3>
         <div>
@@ -59,16 +59,16 @@ export default function Details() {
           </button>
         </div>
         <div>
-          <span className="text-2xl font-semibold text-black">
+          <span className="text-2xl font-semibold text-white">
             Ingredients:
           </span>
           <ul className="flex flex-col gap-3">
             {recipeDetailsData?.recipe?.ingredients.map((ingredient) => (
               <li>
-                <span className="text-2xl font-semibold text-black">
+                <span className="text-2xl font-semibold text-white">
                   {ingredient.quantity} {ingredient.unit}
                 </span>
-                <span className="text-2xl font-semibold text-black">
+                <span className="text-2xl font-semibold text-white">
                   {ingredient.description}
                 </span>
               </li>

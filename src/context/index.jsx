@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const GlobalContext = createContext(null);
@@ -8,9 +8,17 @@ export default function GlobalState({ children }) {
   const [loading, setLoading] = useState(false);
   const [recipeList, setRecipeList] = useState([]);
   const [recipeDetailsData, setRecipeDetailsData] = useState(null);
-  const [favoritesList, setFavoritesList] = useState([])
+  const [favoritesList, setFavoritesList] = useState(() => {
+    const storedFavorites = localStorage.getItem("favoritesList");
+    return storedFavorites ? JSON.parse(storedFavorites) : [];
+  });
 
   const navigate = useNavigate()
+
+  // Save favorites to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem("favoritesList", JSON.stringify(favoritesList));
+  }, [favoritesList]);
 
   async function handleSubmit(event) {
     event.preventDefault();

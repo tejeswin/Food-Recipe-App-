@@ -12,11 +12,12 @@ export default function Navbar() {
       <div className="flex justify-between items-center mb-14">
         {/* Logo */}
         <h2 className="text-4xl lg:text-4xl font-black">
+          🍜
           <NavLink
             to={"/"}
             className="bg-gradient-to-r from-orange-400 to-yellow-300 bg-clip-text text-transparent drop-shadow-lg"
           >
-            🍽️ Recipe Explorer
+             Recipe Explorer
           </NavLink>
         </h2>
 
@@ -33,8 +34,17 @@ export default function Navbar() {
 
           <li>
             <NavLink
+              to={"/about"}
+              className="text-white text-2xl font-semibold hover:text-orange-300 duration-300"
+            >
+              ℹ️ About
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
               to={"/favorites"}
-              className="text-white text-1xl font-semibold hover:text-orange-300 duration-300"
+              className="text-white text-2xl font-semibold hover:text-orange-300 duration-300"
             >
               ❤️ Favorites
             </NavLink>
